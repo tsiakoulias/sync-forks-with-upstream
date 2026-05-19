@@ -103,10 +103,6 @@ jobs:
             upstream_repo: microsoft/MHA
             upstream_branch: main
             fork_branch: main
-          - fork_repo: AutoGPT
-            upstream_repo: Significant-Gravitas/AutoGPT
-            upstream_branch: master
-            fork_branch: main
           - fork_repo: I-Still-Dont-Care-About-Cookies
             upstream_repo: OhMyGuus/I-Still-Dont-Care-About-Cookies
             upstream_branch: master
