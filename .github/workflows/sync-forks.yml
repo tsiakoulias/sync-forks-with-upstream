@@ -135,6 +135,34 @@ jobs:
             upstream_repo: wshobson/agents
             upstream_branch: main
             fork_branch: main
+          - fork_repo: QPrompt-Teleprompter
+            upstream_repo: Cuperino/QPrompt-Teleprompter
+            upstream_branch: main
+            fork_branch: main
+          - fork_repo: autopsy
+            upstream_repo: sleuthkit/autopsy
+            upstream_branch: develop
+            fork_branch: develop
+          - fork_repo: opencode
+            upstream_repo: anomalyco/opencode
+            upstream_branch: dev
+            fork_branch: dev
+          - fork_repo: SatoshiGuesser
+            upstream_repo: Pathos0925/SatoshiGuesser
+            upstream_branch: main
+            fork_branch: main
+          - fork_repo: VibeVoice
+            upstream_repo: microsoft/VibeVoice
+            upstream_branch: main
+            fork_branch: main
+          - fork_repo: localsend
+            upstream_repo: localsend/localsend
+            upstream_branch: main
+            fork_branch: main
+          - fork_repo: sudo-windows
+            upstream_repo: microsoft/sudo
+            upstream_branch: main
+            fork_branch: main
     env:
       FORK_OWNER: tsiakoulias
     steps:
