@@ -142,11 +142,11 @@ jobs:
           - fork_repo: autopsy
             upstream_repo: sleuthkit/autopsy
             upstream_branch: develop
-            fork_branch: develop
+            fork_branch: main
           - fork_repo: opencode
             upstream_repo: anomalyco/opencode
             upstream_branch: dev
-            fork_branch: dev
+            fork_branch: main
           - fork_repo: SatoshiGuesser
             upstream_repo: Pathos0925/SatoshiGuesser
             upstream_branch: main
