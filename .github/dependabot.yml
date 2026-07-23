@@ -1,11 +1,12 @@
 version: 2
 updates:
+  # GitHub Actions (/)
   - package-ecosystem: "github-actions"
     directory: "/"
     target-branch: "main"
     schedule:
       interval: "cron"
-      cronjob: "0 3 * * *"
+      cronjob: "0 3 * * *"  # Every day at 03:00 UTC
       cooldown:
         default-days: 7
     groups:
