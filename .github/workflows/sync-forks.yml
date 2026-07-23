@@ -211,6 +211,26 @@ jobs:
             echo "::warning::Classic PAT scopes do not include 'workflow'. Pushes that modify .github/workflows/* will fail. Add workflow scope."
           fi
 
+      - name: Disable Actions on fork
+        env:
+          FORK_REPO: ${{ matrix.repo.fork_repo }}
+          FORK_SYNC_TOKEN: ${{ secrets.FORK_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          api_url="https://api.github.com/repos/${FORK_OWNER}/${FORK_REPO}/actions/permissions"
+          http_code="$(curl -sS -o /dev/null -w "%{http_code}" \
+            -X PUT \
+            -H "Authorization: token ${FORK_SYNC_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -d '"'"'{"enabled":false}'"'"' \
+            "$api_url")"
+          if [ "$http_code" != "200" ] && [ "$http_code" != "204" ]; then
+            echo "::warning::Failed to disable Actions on ${FORK_OWNER}/${FORK_REPO} (HTTP ${http_code})"
+          else
+            echo "Actions disabled on ${FORK_OWNER}/${FORK_REPO}"
+          fi
+
+
       - name: Mirror upstream branch to fork branch
         env:
           FORK_REPO: ${{ matrix.repo.fork_repo }}
@@ -261,22 +281,3 @@ jobs:
           fi
 
           echo "Mirrored ${UPSTREAM_REPO}:${upstream_branch} -> ${FORK_OWNER}/${FORK_REPO}:${fork_branch}"
-
-      - name: Disable Actions on fork
-        env:
-          FORK_REPO: ${{ matrix.repo.fork_repo }}
-          FORK_SYNC_TOKEN: ${{ secrets.FORK_SYNC_TOKEN }}
-        run: |
-          set -euo pipefail
-          api_url="https://api.github.com/repos/${FORK_OWNER}/${FORK_REPO}/actions/permissions"
-          http_code="$(curl -sS -o /dev/null -w "%{http_code}" \
-            -X PUT \
-            -H "Authorization: token ${FORK_SYNC_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            -d '"'"'{"enabled":false}'"'"' \
-            "$api_url")"
-          if [ "$http_code" != "200" ] && [ "$http_code" != "204" ]; then
-            echo "::warning::Failed to disable Actions on ${FORK_OWNER}/${FORK_REPO} (HTTP ${http_code})"
-          else
-            echo "Actions disabled on ${FORK_OWNER}/${FORK_REPO}"
-          fi
