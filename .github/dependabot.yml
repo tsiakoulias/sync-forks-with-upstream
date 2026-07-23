@@ -9,13 +9,6 @@ updates:
       cronjob: "0 3 * * *"  # Every day at 03:00 UTC
       cooldown:
         default-days: 7
-    groups:
-      group-non-major:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
     commit-message:
       prefix: "chore(dependabot)"
     open-pull-requests-limit: 64
