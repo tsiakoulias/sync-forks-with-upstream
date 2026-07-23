@@ -19,6 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         repo:
+          - fork_repo: scrapemychats-chatgpt
+            upstream_repo: Conradqh/scrapemychats
+            upstream_branch: main
+            fork_branch: main
           - fork_repo: xpipe
             upstream_repo: xpipe-io/xpipe
             upstream_branch: master
