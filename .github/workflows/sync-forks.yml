@@ -163,6 +163,14 @@ jobs:
             upstream_repo: microsoft/sudo
             upstream_branch: main
             fork_branch: main
+          - fork_repo: topcoat
+            upstream_repo: tokio-rs/topcoat
+            upstream_branch: main
+            fork_branch: main
+          - fork_repo: hermes-agent
+            upstream_repo: NousResearch/hermes-agent
+            upstream_branch: main
+            fork_branch: main
     env:
       FORK_OWNER: tsiakoulias
     steps:
