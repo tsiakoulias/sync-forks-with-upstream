@@ -5,7 +5,9 @@ updates:
     target-branch: "main"
     schedule:
       interval: "cron"
-      cronjob: "0 3 * * 0"
+      cronjob: "0 3 * * *"
+      cooldown:
+        default-days: 7
     groups:
       group-non-major:
         patterns:
